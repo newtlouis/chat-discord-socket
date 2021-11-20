@@ -65,6 +65,11 @@ io.on("connection", (socket) => {
             io.in(msg.room).emit("chat_message", msg);
         }).catch(e => console.log(e));
     })
+
+    // ecoute typing
+    socket.on("typing", msg => {
+        socket.to(msg.room).emit("usertyping", msg);
+    })
 })
 
 http.listen(3000, () => {

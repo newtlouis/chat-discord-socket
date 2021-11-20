@@ -49,10 +49,30 @@ window.onload = () => {
                 publishMessages(donnees)
             })
         }
+    })
 
+    // On écoute la frappe au clavier
+    document.querySelector("#msg").addEventListener("input", () => {
+        const name = document.querySelector("#name").value;
+        const room = document.querySelector("#tabs li.active").dataset.room;
+        socket.emit("typing", {
+            name: name,
+            room: room
+        });
+    });
+
+    // On écoute les message typing
+    socket.on("usertyping", msg => {
+        const writting = document.querySelector("#writting");
+        writting.innerHTML = `${msg.name} écrit un message...`;
+        setTimeout(function(){
+            writting.innerHTML = "";
+        },5000) 
     })
 }
 
 function publishMessages(msg) {
-    document.querySelector("#messages").innerHTML += `<p>${msg.name} dit ${msg.message}<p/>`;
+    let created = new Date(msg.createdAt);
+    let texte = `<div><p>${msg.name} <small>${created.toLocaleDateString()}</small></p><p>${msg.message}<p/></div>`;
+    document.querySelector("#messages").innerHTML += texte;
 }
