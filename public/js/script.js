@@ -13,15 +13,15 @@ window.onload = () => {
         const room = document.querySelector("#tabs li.active").dataset.room;
         const createdAt = new Date();
 
-        socket.emit("chat_message", { 
-            name: name.value, 
-            msg: msg.value,
+        socket.emit("chat_message", {
+            name: name.value,
+            message: msg.value,
             room: room,
             createdAt: createdAt
         })
     });
     socket.on("chat_message", (msg) => {
-        document.querySelector("#messages").innerHTML += `<p>${msg.name} dit ${msg.msg}<p/>`;
+        publishMessages(msg);
         document.querySelector("#msg").value = '';
     });
 
@@ -32,13 +32,27 @@ window.onload = () => {
                 const actif = document.querySelector("#tabs li.active");
                 actif.classList.remove("active");
                 this.classList.add("active");
-                document.querySelector("#messages").innerHTML ="";
-                
+                document.querySelector("#messages").innerHTML = "";
+
                 // On sort puis on entre dans la nouvelle salle
                 socket.emit("leave_room", actif.dataset.room);
                 socket.emit("enter_room", this.dataset.room);
             }
         })
 
+    });
+
+    socket.on("init_messages", msg => {
+        let data = JSON.parse(msg.messages);
+        if (data != []) {
+            data.forEach(donnees => {
+                publishMessages(donnees)
+            })
+        }
+
     })
+}
+
+function publishMessages(msg) {
+    document.querySelector("#messages").innerHTML += `<p>${msg.name} dit ${msg.message}<p/>`;
 }
