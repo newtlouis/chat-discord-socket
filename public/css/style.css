@@ -62,14 +62,19 @@ form{
     display: flex;
 }
 
+#name, #msg{
+    color: white;
+    background-color: #40444b;
+    padding: 10px;
+    border: none;
+}
+
 #name{
     flex:1;
-    padding: 10px;
 }
 
 #msg{
     flex: 5;
-    padding: 10px;
 }
 
 button{
