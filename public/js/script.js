@@ -25,6 +25,11 @@ window.onload = () => {
                 const actif = document.querySelector("#tabs li.active");
                 actif.classList.remove("active");
                 this.classList.add("active");
+                document.querySelector("#messages").innerHTML ="";
+                
+                // On sort puis on entre dans la nouvelle salle
+                socket.emit("leave_room", actif.dataset.room);
+                socket.emit("enter_room", this.dataset.room);
             }
         })
 

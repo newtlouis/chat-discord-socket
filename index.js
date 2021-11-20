@@ -38,6 +38,11 @@ io.on("connection", (socket) => {
         socket.join(room);
         console.log(socket.rooms);
     })
+     // On écoute les sorties
+     socket.on("leave_room", (room)=> {
+        socket.leave(room);
+        console.log(socket.rooms);
+    })
 
     socket.on("chat_message", (msg) => {
         io.emit("chat_message", msg);
