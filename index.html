@@ -6,16 +6,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat socket.io</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <h1>Chat avec socket</h1>
-    <div id="messages"></div>
-    <form>
-        <input type="text" id="name" placeholder="Entrez votre nom">
-        <input type="text" id="msg" placeholder="Entrez votre nom">
-        <button>Envoyer</button>
-    </form>
+    <aside>
+        <ul id="tabs">
+            <li class="active"># Général</li>
+            <li># Entraide</li>
+            <li># Divers</li>
+        </ul>
+    </aside>
+
+    <main>
+        <div id="content">
+            <div id="messages"></div>
+            <div id="writting">Louis écrit un message</div>
+        </div>
+        <form>
+            <input type="text" id="name" placeholder="Entrez votre nom">
+            <input type="text" id="msg" placeholder="Entrez votre nom">
+            <button>Envoyer</button>
+        </form>
+    </main>
+
 
     <script src="/socket.io/socket.io.js"></script>
     <script>
