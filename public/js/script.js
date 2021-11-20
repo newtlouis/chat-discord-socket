@@ -1,4 +1,10 @@
 const socket = io();
+
+// Arrivée d'un nouvel user
+socket.on("connect", () => {
+    socket.emit("enter_room", "general");
+})
+
 window.onload = () => {
     document.querySelector("form").addEventListener("submit", (e) => {
         e.preventDefault();
@@ -10,6 +16,17 @@ window.onload = () => {
     socket.on("chat_message", (msg) => {
         document.querySelector("#messages").innerHTML += `<p>${msg.name} dit ${msg.msg}<p/>`;
         document.querySelector("#msg").value = '';
+    });
+
+    // on écoute le click sur les onglets
+    document.querySelectorAll("#tabs li").forEach((tab) => {
+        tab.addEventListener("click", function () {
+            if (!this.classList.contains("active")) {
+                const actif = document.querySelector("#tabs li.active");
+                actif.classList.remove("active");
+                this.classList.add("active");
+            }
+        })
 
     })
 }

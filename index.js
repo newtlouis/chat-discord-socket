@@ -33,6 +33,12 @@ io.on("connection", (socket) => {
         console.log("Un user s'est déconnecté");
     });
 
+    // On écoute les entrées
+    socket.on("enter_room", (room)=> {
+        socket.join(room);
+        console.log(socket.rooms);
+    })
+
     socket.on("chat_message", (msg) => {
         io.emit("chat_message", msg);
     })
