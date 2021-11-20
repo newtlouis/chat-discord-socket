@@ -45,7 +45,15 @@ io.on("connection", (socket) => {
     })
 
     socket.on("chat_message", (msg) => {
-        io.emit("chat_message", msg);
+        const message = Chat.create({
+            name: msg.name,
+            message: msg.msg,
+            room: msg.room,
+            createdAt: msg.createdAt
+        }).then(()=>{
+            // On envoit uniquement aux user de la meme room
+            io.in(msg.room).emit("chat_message", msg);
+        }).catch(e => console.log(e));
     })
 })
 

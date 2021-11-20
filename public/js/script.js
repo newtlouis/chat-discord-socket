@@ -10,8 +10,15 @@ window.onload = () => {
         e.preventDefault();
         const name = document.querySelector("#name");
         const msg = document.querySelector("#msg");
+        const room = document.querySelector("#tabs li.active").dataset.room;
+        const createdAt = new Date();
 
-        socket.emit("chat_message", { name: name.value, msg: msg.value })
+        socket.emit("chat_message", { 
+            name: name.value, 
+            msg: msg.value,
+            room: room,
+            createdAt: createdAt
+        })
     });
     socket.on("chat_message", (msg) => {
         document.querySelector("#messages").innerHTML += `<p>${msg.name} dit ${msg.msg}<p/>`;
