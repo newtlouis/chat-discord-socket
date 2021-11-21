@@ -61,13 +61,13 @@ window.onload = () => {
         });
     });
 
-    // On écoute les message typing
+    // On écoute les messages "someone is writting"
     socket.on("usertyping", msg => {
         const writting = document.querySelector("#writting");
         writting.innerHTML = `${msg.name} écrit un message...`;
-        setTimeout(function(){
+        setTimeout(function () {
             writting.innerHTML = "";
-        },5000) 
+        }, 5000)
     })
 }
 
