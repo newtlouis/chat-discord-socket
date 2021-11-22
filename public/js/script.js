@@ -25,6 +25,7 @@ window.onload = () => {
     });
     socket.on("chat_message", (msg) => {
         publishMessages(msg);
+        scrollToBottom();
         document.querySelector("#msg").value = '';
     });
 
@@ -78,4 +79,8 @@ function publishMessages(msg) {
     let created = new Date(msg.createdAt);
     let texte = `<div><p><span class="msg__name">${msg.name}</span> <span class="msg__date">${created.toLocaleDateString()}</span></p><p>${msg.message}<p/></div>`;
     document.querySelector("#messages").innerHTML += texte;
+};
+
+function scrollToBottom() {
+    messages.scrollTop = messages.scrollHeight;
 }
