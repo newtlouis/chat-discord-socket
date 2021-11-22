@@ -12,10 +12,20 @@ header{
 
 header h1{
     color: gold;
+    flex: 9;
 }
 
-header a{
-    color: gold;
+.deconnexion{
+    flex: 1;
+    font-weight: bolder;
+    background-color: gold;
+    color: #2f3136;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.deconnexion a{
+    color: #2f3136;
     text-decoration: none;
 }
 
@@ -53,7 +63,7 @@ main{
 }
 
 #content{
-    height: 85vh;
+    height: 82vh;
     position: relative;
 }
 
@@ -112,3 +122,4 @@ button{
     color:gray;
     font-size:12px ;
 }
+
