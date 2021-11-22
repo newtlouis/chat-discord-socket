@@ -84,3 +84,12 @@ button{
     background-color: cadetblue;
     color: cornsilk;
 }
+
+.msg__name{
+    color: gold;
+}
+
+.msg__date{
+    color:gray;
+    font-size:12px ;
+}
