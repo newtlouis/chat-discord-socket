@@ -10,26 +10,34 @@
 </head>
 
 <body>
-    <aside>
-        <ul id="tabs">
-            <li data-room="general" class="active"># Général</li>
-            <li data-room="entraide"># Entraide</li>
-            <li data-room="divers"># Divers</li>
-        </ul>
-    </aside>
+    <header>
+        <h1>Doscord</h1>
+        <a href="login.html">Déconnexion</a>
+    </header>
 
-    <main>
-        <div id="content">
-            <div id="messages"></div>
-            <div id="writting"></div>
-        </div>
-        <form>
-            <input autocomplete="off" type="text" id="name" placeholder="Entrez votre nom">
-            <input autocomplete="off" type="text" id="msg" placeholder="Entrez votre nom">
-            <button>Envoyer</button>
-        </form>
-    </main>
+    <div class="content">
 
+        <aside>
+            <ul id="tabs">
+                <li data-room="general" class="active"># Général</li>
+                <li data-room="entraide"># Entraide</li>
+                <li data-room="divers"># Divers</li>
+            </ul>
+        </aside>
+    
+        <main>
+            <div id="content">
+                <div id="messages"></div>
+                <div id="writting"></div>
+            </div>
+            <form>
+                <input autocomplete="off" type="text" id="name" placeholder="Entrez votre nom">
+                <input autocomplete="off" type="text" id="msg" placeholder="Ecrivez votre message içi...">
+                <button>Envoyer</button>
+            </form>
+        </main>
+
+    </div>    
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="js/script.js"></script>

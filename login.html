@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doscord - connexion</title>
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+
+    <form>
+
+        <div class="form__login">
+            <div class="form__login__header">
+                <h2>Connectez vous</h2>
+                <a class="toSignup">Vous n'avez pas encore de compte ? </a>
+            </div>
+
+            <div class="error"></div>
+
+            <div class="form__pseudo">
+                <label for="pseudo"><i class="fas fa-envelope"></i></label>
+                <input class="form__pseudo__value" type="text" placeholder="pseudo" required />
+            </div>
+
+            <div class="form__email">
+                <label for="email"><i class="fas fa-envelope"></i></label>
+                <input class="form__email__value" type="text" placeholder="email" required />
+            </div>
+
+            <div class="form__password">
+                <label for="password"><i class="fas fa-lock"></i></label>
+                <input class="form__password__value" type="password" placeholder="password">
+            </div>
+            <button class="submit" type="submit">Je valide</button>
+
+        </div>
+    </form>
+
+    <script src="js/login.js"></script>
+
+</body>
+</html>

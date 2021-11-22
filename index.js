@@ -22,9 +22,14 @@ const sequelize = new Sequelize("database", "username", "password", {
 const Chat = require("./Models/Chat")(sequelize, Sequelize.DataTypes);
 Chat.sync();
 
+// rooting
 app.get("/", (req, res) => {
     res.sendFile(__dirname + "/index.html");
-})
+});
+
+app.get("/login.html", (req, res) => {
+    res.sendFile(__dirname + "/login.html");
+});
 
 io.on("connection", (socket) => {
     console.log("Un user s'est connecté");

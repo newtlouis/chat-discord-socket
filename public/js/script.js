@@ -6,6 +6,9 @@ socket.on("connect", () => {
 })
 
 window.onload = () => {
+    // Affichage du pseudo
+    document.querySelector("#name").value = localStorage.getItem("user_pseudo");
+
     document.querySelector("form").addEventListener("submit", (e) => {
         e.preventDefault();
         const name = document.querySelector("#name");
